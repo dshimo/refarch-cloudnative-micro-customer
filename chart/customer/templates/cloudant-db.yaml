@@ -97,5 +97,6 @@ spec:
       - name: populate-db
         image: "{{ .Values.cloudant.image }}"
         imagePullPolicy: IfNotPresent
-        command: ["/bin/sh", "-c", "python3 /tmp/populate.py {{ .Release.Name }}-{{ .Values.service.cloudantservicename }} {{ .Values.cloudant.port }}"]
+        # command: Taken care of by Dockerfile entrypoint, python3 tmp/populate.py
+        args: ["{{ .Release.Name }}-{{ .Values.service.cloudantservicename }}", "{{ .Values.cloudant.port }}"]
       restartPolicy: Never

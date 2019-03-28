@@ -122,7 +122,7 @@ To run Cloudant on docker locally, run the commands below.
 		# Fetch the IP
 		export GATEWAY=$(docker network inspect cloudant | grep "Gateway" | awk '/"/{print $2}' | sed -e 's/^"//' -e 's/"$//')
 		
-		# Build the populate image (Will upload to Dockerhub soon)
+		# Build the populate image (or pull the image with `docker pull ibmcase/populate`)
 		cd cloudant/
 		docker build -t populate .
 		
